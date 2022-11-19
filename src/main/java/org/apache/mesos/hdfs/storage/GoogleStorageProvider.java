@@ -18,6 +18,7 @@ import org.apache.mesos.hdfs.util.PathUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -124,7 +125,7 @@ public class GoogleStorageProvider implements StorageProvider {
         GoogleCredentials.class
     );
 
-    File pem = File.createTempFile("lol", "pem");
+    File pem = Files.createTempFile("lol", "pem").toFile();
     FileOutputStream fileOutputStream = new FileOutputStream(pem);
     fileOutputStream.write(credentials.private_key.getBytes());
     fileOutputStream.close();
